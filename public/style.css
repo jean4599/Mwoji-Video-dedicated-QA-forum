@@ -11,7 +11,7 @@
 	overflow:hidden;
 }
 
-.video-container #ytplayer, .video-container object, .video-container embed {
+.video-container #myvideo, .video-container object, .video-container embed {
 	position:absolute;
 	top:50;
 	left:0;

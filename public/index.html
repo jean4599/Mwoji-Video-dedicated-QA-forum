@@ -45,24 +45,8 @@
 <div class="container">
   <div class="row">
     <div class='col-md-4 col-xs-4'>
-      <video id="myVideo" width="320" height="176" controls>
-        <source src="./assets/Wildlife.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
-      <span id="demo"></span>
-      <script>
-        // Get the video element with id="myVideo"
-        var vid = document.getElementById("myVideo");
-
-        // Assign an ontimeupdate event to the video element, and execute a function if the current playback position has changed
-        vid.ontimeupdate = function() {myFunction()};
-
-        function myFunction() {
-        // Display the current position of the video in a p element with id="demo"
-        document.getElementById("demo").innerHTML = vid.currentTime;
-        }
-      </script>
-      <!--div id="left">
+      
+      <div id="left">
         Questions Here
         <div id="question1" class="questions">
         <div id="screenshot1" class="screenshots">
@@ -89,39 +73,34 @@
         Question Content here
         </div> 
         </div>
-        <a href="#" class="btn btn-warning">Post my question</a>
-        
-        
-        
-      
-      </div-->
+        <a href="#" class="btn btn-warning">Post my question</a>   
+      </div>
+
     </div>
     <div class='col-md-8 col-xs-8'>
          <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-heart-empty"></span> Add video to my favorite</a>
          
+        <span id="demo"></span>
          <div class='video-container'>
-           <div id="ytplayer"></div>         
+           <video id="myVideo" controls>
+            <source src="./assets/Wildlife.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
          </div>
 
 
     <script>
-      // Load the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/player_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        // Get the video element with id="myVideo"
+        var vid = document.getElementById("myVideo");
 
-      // Replace the 'ytplayer' element with an <iframe> and
-      // YouTube player after the API code downloads.
-      var player;
-      function onYouTubePlayerAPIReady() {
-        player = new YT.Player('ytplayer', {
-          height: '370',
-          width: '640',
-          videoId: 'M7lc1UVf-VE'
-        });
-      }
-    </script>
+        // Assign an ontimeupdate event to the video element, and execute a function if the current playback position has changed
+        vid.ontimeupdate = function() {myFunction()};
+
+        function myFunction() {
+        // Display the current position of the video in a p element with id="demo"
+        document.getElementById("demo").innerHTML = vid.currentTime;
+        }
+      </script>
            
      </div>
   </div>
