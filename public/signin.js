@@ -2,10 +2,7 @@
 $( document ).ready(function() { 
 
 	var signinBtn = document.getElementById('signin');
-	var user = firebase.auth().currentUser;
-	if (user != null) {
-		window.location.href = 'video.html';
-	}
+	
 	signinBtn.onclick = function() {
 		alert('signin')
 		var email = document.getElementById('inputEmail').value;
@@ -20,6 +17,18 @@ $( document ).ready(function() {
 		});
 		
 	}
+	var signupbtnclicked = document.getElementById('ClickSign');
+	signupbtnclicked.onclick = function() {
+		window.location.href = 'signup.html';
+	}
+	firebase.auth().onAuthStateChanged(function(user) {
+  		if (user) {
+    		// User is signed in.
+			window.location.href = 'video.html';
+  		} else {
+    		// No user is signed in.
+  		}
+	});
 
 
 });
