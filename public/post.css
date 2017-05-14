@@ -1,8 +1,16 @@
-#posts, #ask, #answer{
-	width:100%;
+.left{
+	height:100%;
+	padding: 10px;
+}
+#overview, #ask, #answer{
+	width:90%;
 	height:100%;
 	position: absolute;
 }
 .hide{
 	display: none;
+}
+#posts{
+	height: 90%;
+	overflow-y: scroll;
 }
