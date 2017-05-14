@@ -1,3 +1,9 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mwoji</title>
+  <link href="jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+</head>
 <body>
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -44,39 +50,34 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class='col-md-4 col-xs-4'>
+    <div class='left posts col-md-4 col-xs-4'>
       
-      <div id="left">
-        Questions Here
-        <div id="question1" class="questions">
-        <div id="screenshot1" class="screenshots">
-        <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" style="width:1px;height:112px;">
-        </div>
-        <div id="questions_content1" class="questions_content">
-        Question Content here
+      <div id='posts'>
         
-        </div>
-        </div>
-        <div id="question2" class="questions">
-        <div id="screenshot2" class="screenshots">
-        <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" style="width:164px;height:112px;">
-        </div>
-        <div id="questions_content1" class="questions_content">
-        Question Content here
-        </div> 
-        </div>
-        <div id="question3" class="questions">
-        <div id="screenshot3" class="screenshots">
-        <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com" style="width:164px;height:112px;">
-        </div>
-        <div id="questions_content1" class="questions_content">
-        Question Content here
-        </div> 
-        </div>
-        <a href="#" class="btn btn-warning">Post my question</a>   
+        <button id='post-btn' class="btn btn-info btn-lg btn-block"> Post a question</button>
       </div>
 
+      <div id='ask' class='hide'>
+        <div>
+          <div class="form-group">
+            <label for="question">Your question</label>
+            <input type="text" class="form-control" id="question" placeholder="What is this?">
+          </div>
+          <div class="form-group">
+            <label for="discription">Detail description</label>
+            <input type="text" class="form-control" id="discription">
+          </div>
+          <button id='cancel-post-btn' class="btn btn-default btn-lg ">Cancel</button>
+          <button type='submit' id='submit-post-btn' class="btn btn-primary btn-lg ">Post</button>
+        </div>
+
+      </div>
+
+      <div id='answer' class='hide'>
+        answer
+      </div>
     </div>
+
     <div class='col-md-8 col-xs-8'>
          <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-heart-empty"></span> Add video to my favorite</a>
          
@@ -105,3 +106,21 @@
      </div>
   </div>
 </div>
+  <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyD9eTYLkqg6vCoDfFXsqRlb7UXpjGNSMJ8",
+      authDomain: "k2t2-ef1e5.firebaseapp.com",
+      databaseURL: "https://k2t2-ef1e5.firebaseio.com",
+      projectId: "k2t2-ef1e5",
+      storageBucket: "k2t2-ef1e5.appspot.com",
+      messagingSenderId: "483404136812"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="jquery/js/jquery-1.9.0.min.js"></script>
+  <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+  <script src="post.js"></script>
+</body>
+</html>
