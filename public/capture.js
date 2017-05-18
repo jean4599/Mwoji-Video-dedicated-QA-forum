@@ -24,29 +24,19 @@ $( document ).ready(function() {
     }
   }
 */
-  function post_question_click() {
-    var screenshot;
-    capture_screenshot();
-  }
+})  
 
-  function capture_screenshot() {
-    // Capture current screen of current video and save it as image file. Return the address of the images
-    var video = document.getElementById("myVideo");
-    var canvas = document.getElementById("canvas");
-    var context = canvas.getContext("2d");
 
-    canvas.width = 600;
-    canvas.height = 400;
+function post_question_click() {
+  var screenshot;
+  capture_screenshot();
+}
 
-    draw(this, context, 600, 400);
+function capture_screenshot() {
+  // Capture current screen of current video and save it as image file. Return the address of the images
+  var video = document.getElementById("myVideo");
+  var canvas = document.getElementById("canvas");
+  var context = canvas.getContext("2d");
 
-    alert("clicked");
-            
-    //var data = canvas.toDataURL('image/png');
-    //document.write('<img src="'+data+'"/>');
-  }
-
-  function draw(v, c, w, h) {
-    c.drawImage(v, 0, 0, w, ,h);
-  }
+  context.drawImage(video, 0, 0, 220, 150);
 }
