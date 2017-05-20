@@ -1,0 +1,36 @@
+
+<body>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+ <link href="signin.css" rel="stylesheet">
+ <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Welcome</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="button" id = "signup">Sign up</button>
+      </form>
+
+    </div>
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD9eTYLkqg6vCoDfFXsqRlb7UXpjGNSMJ8",
+    authDomain: "k2t2-ef1e5.firebaseapp.com",
+    databaseURL: "https://k2t2-ef1e5.firebaseio.com",
+    projectId: "k2t2-ef1e5",
+    storageBucket: "k2t2-ef1e5.appspot.com",
+    messagingSenderId: "483404136812"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src = "signup.js"> </script>
+</body>

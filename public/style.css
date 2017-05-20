@@ -1,0 +1,28 @@
+.container{
+  width: 100%;
+  height: 100%;
+  padding: 100px;
+  /*background-color: #EEEEEE;*/
+}
+.video-container {
+  padding-top:10px;
+	padding-bottom:56.25%;
+	height:0;
+	overflow:hidden;
+}
+
+.video-container #myvideo, .video-container object, .video-container embed {
+	position:absolute;
+	top:50;
+	left:0;
+	width:100%;
+	height:auto;
+}
+
+.screenshots{
+  height: 100%;
+  background-color: #FFF;
+  width: 50%;
+  position: relative;
+  float: left;
+}

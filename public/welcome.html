@@ -1,0 +1,43 @@
+
+<body>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+ <link href="signin.css" rel="stylesheet">
+ <div class="container">
+
+      <div class="form-signin">
+        <h2 class="form-signin-heading">Welcome to K2T2</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input name = "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name = "password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" id = "signin">Sign in</button>
+
+      </div>
+
+    </div>
+  <button id = "ClickSign" type="button" class="btn btn-primary">Sign Up</button>
+
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD9eTYLkqg6vCoDfFXsqRlb7UXpjGNSMJ8",
+    authDomain: "k2t2-ef1e5.firebaseapp.com",
+    databaseURL: "https://k2t2-ef1e5.firebaseio.com",
+    projectId: "k2t2-ef1e5",
+    storageBucket: "k2t2-ef1e5.appspot.com",
+    messagingSenderId: "483404136812"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src = "signin.js"> </script>
+</body>
