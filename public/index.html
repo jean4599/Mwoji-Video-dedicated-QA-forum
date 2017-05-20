@@ -82,32 +82,16 @@
     <div class='col-md-8 col-xs-8'>
          <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-heart-empty"></span> Add video to my favorite</a>
          
-        <span id="demo"></span>
          <div class='video-container'>
            <video id="myVideo" controls>
             <source src="./assets/Wildlife.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
           </video>
          </div>
-         <canvas id="canvas" style="width: 300px; height: 200px;"/>
-
-
-    <script>
-        // Get the video element with id="myVideo"
-        var vid = document.getElementById("myVideo");
-
-        // Assign an ontimeupdate event to the video element, and execute a function if the current playback position has changed
-        vid.ontimeupdate = function() {myFunction()};
-
-        function myFunction() {
-        // Display the current position of the video in a p element with id="demo"
-        document.getElementById("demo").innerHTML = vid.currentTime;
-        }
-      </script>
-           
      </div>
   </div>
 </div>
+<div id="testposition"> Here </div>
   <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
   <script>
     // Initialize Firebase
