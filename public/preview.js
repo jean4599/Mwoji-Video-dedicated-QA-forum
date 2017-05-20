@@ -1,4 +1,7 @@
 
+var url;
+var ref;
+var fn;
 $(document).ready(function(){
 	function initPopular(){
 		var fileName;
@@ -26,9 +29,9 @@ $(document).ready(function(){
 							<a href="" ><span><img src="images/'+current.fileName+'.jpg" width=80 height=64></img>'+current.length+'</span></a>\
 		                	</div>\
 		                	<div class=\"sb-vdo-info\">\
-		                    <div class=\"sb-vdo-title\"><a href=\"preview.html\"><h3>'+current.title+'<\/h3><\/a><\/div>\
+		                    <div class=\"sb-vdo-title\"><a href="preview.html?fileName='+ current.fileName +'"><h3>'+current.title+'<\/h3><\/a><\/div>\
 		                    <div class=\"sb-vdo-desc\">' + current.description+ '</div>\
-		                    <div class=\"sb-vdo-detail\"><span>|</span>' +current.questions +' questions <span>|</span> '+current.watched+'</div>\
+		                    <div class=\"sb-vdo-detail\"><span>|</span>' +current.questionCount +' questions <span>|</span> '+current.watched+'</div>\
 		                </div>\
 		                <div class="clear"></div>\
 		            </div>');
@@ -40,4 +43,22 @@ $(document).ready(function(){
 		//$(".mainVideoTitle").text("")
 	}
 	initPopular();
+	url = location.search;
+	fn = $.query.get('fileName');
+	console.log(fn);
+	$(".vdo-log .logo").find("img").attr("src","images/"+fn+".jpg");
+	ref = firebase.database().ref("/videos/videoList");
+	ref.once("value",function(snapshot){
+		snapshot.forEach(function(videoSnap){
+			if(videoSnap.val().fileName == fn){
+				var current= videoSnap.val();
+				console.log("FOUND");
+				$(".content .heading6 h1").text(current.title);		
+				$(".vb-desc").text(current.description);
+				$("#views").text(current.watched+" Views");
+				$("#questions").text(current.questionCount+" Questions");
+				$("#unanswered").text(0 + " UNanswered");
+			}
+		});
+	});
 });

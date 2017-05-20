@@ -17,16 +17,16 @@ $(document).ready(function(){
 							console.log(current.title);
 							$(".mainVideoTitle").text(current.title);
 							$(".mainVideoWatchCount").text("watched:" + current.watched);
-							$(".mainVideoQuestionCount").text("# of questions:" + current.questions);
+							$(".mainVideoQuestionCount").text("# of questions:" + current.questionCount);
 							$(".video-player").find("img").attr("src","images/" + current.fileName+ ".jpg");
 						}
 						$(".videoList .heading").after('<div class=\"vdo-list\"><div class=\"vdo-thumb\">\
 							<a href="" ><span><img src="images/'+current.fileName+'.jpg" width=125 height=100></img>'+current.length+'</span></a>\
 		                	</div>\
 		                	<div class=\"vdo-info\">\
-		                    <div class=\"vdo-title\"><a href=\"preview.html\"><h3>'+current.title+'<\/h3><\/a><\/div>\
+		                    <div class=\"vdo-title\"><a href="preview.html?fileName='+current.fileName+'"><h3>'+current.title+'<\/h3><\/a><\/div>\
 		                    <div class=\"vdo-desc\">' + current.description+ '</div>\
-		                    <div class=\"vdo-detail\">10 minutes ago <span>|</span>' +current.questions +' questions <span>|</span> '+current.watched+'</div>\
+		                    <div class=\"vdo-detail\">10 minutes ago <span>|</span>' +current.questionCount +' questions <span>|</span> '+current.watched+'</div>\
 		                </div>\
 		                <div class="clear"></div>\
 		            </div>');
