@@ -1,16 +1,5 @@
 $( document ).ready(function() {
-  var vid = document.getElementById("myVideo");
-
-  // Assign an ontimeupdate event to the video element, and execute a function if the current playback position has changed
-  vid.ontimeupdate = function() {myFunction()};
-
-  document.getElementById("")
-
-  function myFunction() {
-  // Display the current position of the video in a p element with id="demo"
-  document.getElementById("demo").innerHTML = vid.currentTime;
-  }
-/*
+  /*
   function favorite_click() {
     var favorite_button = document.getElementById("favorite_button");
 
@@ -24,19 +13,47 @@ $( document ).ready(function() {
     }
   }
 */
-})  
+  reload_screenshots();
+})
 
-
-function post_question_click() {
-  var screenshot;
-  capture_screenshot();
+function reload_screenshots() {
+  video_name = "video2";
+  firebase.database().ref("videos/videoList/" + video_name + "/questions").on("value", function(snapshot) {
+    data = snapshot.val();
+    if(data) {
+      screenshots = Object.keys(data).map(function(key) {return data[key]})
+      capture_on_time(screenshots, screenshots.length - 1);
+    }
+  })
 }
 
-function capture_screenshot() {
-  // Capture current screen of current video and save it as image file. Return the address of the images
-  var video = document.getElementById("myVideo");
-  var canvas = document.getElementById("canvas");
-  var context = canvas.getContext("2d");
+function post_question_click() {
+  video_name = "video2";
+  firebase.database().ref("videos/videoList/" + video_name + "/questions").push().set(document.getElementById("myVideo").currentTime);
+}
 
-  context.drawImage(video, 0, 0, 220, 150);
+function capture_on_time(times, i, canvas_id="myCanvas", width=200, height=150) {
+  if (i < 0) {
+    return;
+  }
+  var video = document.getElementById("myVideo");
+  var cnvs;
+  var curtime = video.currentTime;
+
+  video.currentTime = times[i];
+  video.onseeked = function() {
+    var cnvs = document.createElement("canvas");
+    var context = cnvs.getContext("2d");
+    context.drawImage(video, 0, 0, 220, 150);
+    cnvs.id = canvas_id
+    cnvs.style.width = width;
+    cnvs.style.height = height;
+
+    // Append "cnvs" into the html (where you want)
+    document.getElementById("testposition").appendChild(cnvs);
+
+    video.currentTime = curtime;
+    video.onseeked = null;
+    capture_on_time(times, i-1)
+  };
 }
