@@ -32,7 +32,7 @@ $(document).ready(function(){
 					$(".video-player").find("img").attr("src","images/" + current.fileName+ ".jpg");
 				}
 				$(".videoList .heading").after('<div class=\"vdo-list\"><div class=\"vdo-thumb\">\
-					<a href="" ><span><img src="images/'+current.fileName+'.jpg" width=125 height=100></img>'+current.length+'</span></a>\
+					<a href="preview.html?fileName='+current.fileName+'" ><span><img src="images/'+current.fileName+'.jpg" width=125 height=100></img>'+current.length+'</span></a>\
                 	</div>\
                 	<div class=\"vdo-info\">\
                     <div class=\"vdo-title\"><a href="preview.html?fileName='+current.fileName+'"><h3>'+current.title+'<\/h3><\/a><\/div>\
