@@ -35,10 +35,10 @@ $(document).ready(function(){
 					$(".video-player").find("img").attr("src","images/" + current.fileName+ ".jpg");
 				}
 				$(".videoList .heading").after('<div class=\"vdo-list\"><div class=\"vdo-thumb\">\
-					<a href="preview.html?fileName='+current.fileName+'" ><span><img src="images/'+current.fileName+'.jpg" width=125 height=100></img>'+current.length+'</span></a>\
+					<a href="preview.html?fileName='+current.fileName+'&id='+UserID+'" ><span><img src="images/'+current.fileName+'.jpg" width=125 height=100></img>'+current.length+'</span></a>\
                 	</div>\
                 	<div class=\"vdo-info\">\
-                    <div class=\"vdo-title\"><a href="preview.html?fileName='+current.fileName+'"><h3>'+current.title+'<\/h3><\/a><\/div>\
+                    <div class=\"vdo-title\"><a class="personal" href="preview.html?fileName='+current.fileName+'&id=' +UserID+'"><h3>'+current.title+'<\/h3><\/a><\/div>\
                     <div class=\"vdo-desc\">' + current.description+ '</div>\
                     <div class=\"vdo-detail\">10 minutes ago <span>|</span>' +current.questionCount +' questions <span>|</span> '+current.watched+' views</div>\
                 </div>\
@@ -51,7 +51,10 @@ $(document).ready(function(){
 		
 		//$(".mainVideoTitle").text("")
 	}
-	init();
+	
 	UserID = $.query.get('id');
 	$(".userName").text(UserID.split("@")[0]);
+	var link = $(".personal").first().attr("href");
+	$(".personal").attr("href",link + "id=" + UserID);
+	init();
 });
