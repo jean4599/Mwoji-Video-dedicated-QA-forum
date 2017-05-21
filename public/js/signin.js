@@ -12,15 +12,14 @@ $( document ).ready(function() {
   			// Handle Errors here.
   			var errorCode = error.code;
   			var errorMessage = error.message;
-  			alert(errorMessage);
+  			if (errorCode == 'auth/invalid-email') {
+  				alert("Enter a valid email");
+  			}
   			// ...
 		});
 		
 	}
-	var signupbtnclicked = document.getElementById('ClickSign');
-	signupbtnclicked.onclick = function() {
-		window.location.href = 'signup.html';
-	}
+	
 	firebase.auth().onAuthStateChanged(function(user) {
   		if (user) {
     		// User is signed in.
