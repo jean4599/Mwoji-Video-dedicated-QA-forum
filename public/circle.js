@@ -1,19 +1,38 @@
 $( document ).ready(function() {
+    v = document.getElementById("myVideo")
+    v.addEventListener( "loadedmetadata", function (e) {
+    var width = this.videoWidth,
+        height = this.videoHeight;
+}, false );
     $("#post-btn").on('click', function() {
         var video = document.getElementById("myVideo");
-        thecanvas = drawableCanvas(video, 'drawcanvas');
-        ctx = thecanvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, w, h);   
-        $(".container").append(thecanvas);
+        canvas = drawableCanvas(video);
+        ctx = canvas.getContext('2d');
+        video.pause();
+        video.controls = false;
+        $('#video-canvas').css('z-index', 1);
+    })
+
+    $("#submit-post-btn, #cancel-post-btn").on('click', function() {
+        var canvas = document.getElementById("video-canvas");
+        var video = document.getElementById("myVideo");
+        ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.onmousedown = null;
+        canvas.onmouseup = null;
+        canvas.onmousemove = null;
+        $('#video-canvas').css('z-index', -1);
+        video.controls = true;
     })
 })
 
 
 
-function drawableCanvas(video, canvasid) {
-    var canvas = document.createElement("canvas");
-    canvas.setAttribute("id", canvasid);
+function drawableCanvas(video) {
+    var canvas = document.getElementById("video-canvas");
     ctx = canvas.getContext('2d');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
     w = canvas.width;
     h = canvas.height;
     var x1, y1;                 /// start points
@@ -28,15 +47,15 @@ function drawableCanvas(video, canvasid) {
     	x1 = e.clientX - rect.left;
     	y1 = e.clientY - rect.top;
     	isDown = true;
-        cx1 = x1;
-        cy1 = y1;
+        cx1 = x1 * 300 / w;
+        cy1 = y1 * 150 / h;
 	}
 
 	/// clear isDown flag to stop drawing
 	canvas.onmouseup = function() {
     	isDown = false;
-        cx2 = x2;
-        cy2 = y2;
+        cx2 = x2 * 300 / w;
+        cy2 = y2 * 150 / h;
 	}
 
 	/// draw ellipse from start point
@@ -49,7 +68,7 @@ function drawableCanvas(video, canvasid) {
     	    y2 = e.clientY - rect.top;
 
     	/// clear canvas
-    	ctx.drawImage(video, 0, 0, w, h);
+    	ctx.clearRect(0, 0, w, h);
 
     	/// draw ellipse
     	drawEllipse(ctx, x1, y1, x2, y2);
