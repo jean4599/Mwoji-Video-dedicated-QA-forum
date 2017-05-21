@@ -31,14 +31,16 @@ $( document ).ready(function() {
 	$('#post-btn').on('click',function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
-		//get video timestamp at the time that post is clicked
-		videoTimeStamp = document.getElementById("myVideo").currentTime;
 	})
 	$('#cancel-post-btn').on('click', function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
 	})
 	$('#submit-post-btn').on('click', function(){
+
+		//get video timestamp at the time that post is clicked
+		videoTimeStamp = document.getElementById("myVideo").currentTime;
+		
 		const question = document.getElementById('question').value;
 		const discription = document.getElementById('discription').value;
 		const timestamp = getTimeStamp()
@@ -96,7 +98,9 @@ $( document ).ready(function() {
 	}
 	function renderPost(post){
 
-		var newPost = "<div class='panel panel-default' id='"+post.key+"'>"+
+		var newPost = $('#post-template').clone();
+		
+		var post = "<div class='panel panel-default' id='"+post.key+"'>"+
 		          "<div class='panel-heading'>"+
 		            "<h3 class='panel-title'>"+post.question+
 		          "</h3></div>"+

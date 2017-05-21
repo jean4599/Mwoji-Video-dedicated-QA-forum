@@ -61,20 +61,26 @@
                   <!-- Description and answer/right -->
                   <div class='post-content col-md-6 col-xs-6'>
                     <p class='description'>Description</p>
-                    <div class='top-answer'>Best answer: 
-                      <p class='answer'>No answer yet</p>
+                    <div>Best answer: 
+                      <p class='top-answer'>No answer yet</p>
                     </div> 
-                    <button type="button" class="btn btn-default answer-btn">Answer / See more</button>
+                    <button type="button" class="btn btn-default answer-btn">Answer / See more <span class="glyphicon glyphicon-chevron-down"></button>
                   </div>
                 </div>
               </div>
               <!-- Answer list -->
-              <ul class="list-group answer">
+              <ul class="list-group answer hide">
                 <li class="list-group-item">Cras justo odio</li>
                 <li class="list-group-item">Dapibus ac facilisis in</li>
                 <li class="list-group-item">Morbi leo risus</li>
                 <li class="list-group-item">Porta ac consectetur ac</li>
                 <li class="list-group-item">Vestibulum at eros</li>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Your answer">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">OK</button>
+                  </span>
+                </div><!-- /input-group -->
               </ul>
           </div>
 
@@ -131,6 +137,7 @@
   <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
   <script src="jquery-plugin-query-object-master/jquery.query-object.js"></script>
   <script src="post.js"></script> 
+  <script src="answer.js"></script> 
   <script src="circle.js"></script>
 </body>
 </html>
