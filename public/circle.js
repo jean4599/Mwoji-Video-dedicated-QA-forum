@@ -6,17 +6,23 @@ $( document ).ready(function() {
 }, false );
     $("#post-btn").on('click', function() {
         var video = document.getElementById("myVideo");
-        thecanvas = drawableCanvas(video);
-        ctx = thecanvas.getContext('2d');
+        canvas = drawableCanvas(video);
+        ctx = canvas.getContext('2d');
         video.pause();
+        video.controls = false;
+        $('#video-canvas').css('z-index', 1);
     })
+
     $("#submit-post-btn, #cancel-post-btn").on('click', function() {
         var canvas = document.getElementById("video-canvas");
+        var video = document.getElementById("myVideo");
         ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvas.onmousedown = null;
         canvas.onmouseup = null;
         canvas.onmousemove = null;
+        $('#video-canvas').css('z-index', -1);
+        video.controls = true;
     })
 })
 
