@@ -1,7 +1,7 @@
 var fileName;
 var ref;
 var maxViewed ="psy";
-
+var UserID;
 $(document).ready(function(){
 	$(".sidebox-image").click(function(){
 		alert("it worksss!");
@@ -52,4 +52,6 @@ $(document).ready(function(){
 		//$(".mainVideoTitle").text("")
 	}
 	init();
+	UserID = $.query.get('id');
+	$(".userName").text(UserID.split("@")[0]);
 });
