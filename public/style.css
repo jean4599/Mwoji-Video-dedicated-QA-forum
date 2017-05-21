@@ -11,12 +11,15 @@
 	overflow:hidden;
 }
 
-.video-container #myvideo, .video-container object, .video-container embed {
+.video-container #myvideo, .video-container object, .video-container embed , #video-canvas{
 	position:absolute;
 	top:50;
 	left:0;
 	width:100%;
 	height:auto;
+}
+#video-canvas{
+  z-index: 10;
 }
 
 .screenshots{

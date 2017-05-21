@@ -96,7 +96,7 @@ $( document ).ready(function() {
 		            post.discription+
 		          "</div></div>";
 		
-		$('#posts').append(newPost);
+		$('#posts').append(post);
 		
 	}
 	function getTimeStamp(){
