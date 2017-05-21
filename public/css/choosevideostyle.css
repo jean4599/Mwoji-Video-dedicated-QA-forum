@@ -49,6 +49,11 @@ table {
 	border-spacing: 0;
 }
 /* style */
+.tutorial{
+	color:#6b5f5a;
+	border-bottom:1px dotted #dddddd;
+	font-family:Arial, Helvetica, sans-serif;
+}
 body{
 	font-family:Arial, Helvetica, sans-serif;
 	background:#f9f9f9;
