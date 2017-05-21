@@ -1,7 +1,6 @@
 var UserID;
 var fileName;
 var cx1, cx2, cy1, cy2;
->>>>>>> origin/master
 $( document ).ready(function() {
 	
 	const videoName = 'video2';
