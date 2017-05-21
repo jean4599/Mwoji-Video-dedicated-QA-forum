@@ -1,12 +1,17 @@
 $( document ).ready(function() {
-	var posts=[];
+	
 	const videoName = 'video2';
 	const REF_question = 'videos/videoList/'+videoName+'/questions';
+	var posts=[];
+	var videoTimeStamp;
+
 	initPost();
 
 	$('#post-btn').on('click',function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
+		//get video timestamp at the time that post is clicked
+		videoTimeStamp = document.getElementById("myVideo").currentTime;
 	})
 	$('#cancel-post-btn').on('click', function(){
 		$('#ask').toggleClass('hide');
@@ -15,13 +20,12 @@ $( document ).ready(function() {
 	$('#submit-post-btn').on('click', function(){
 		const question = document.getElementById('question').value;
 		const discription = document.getElementById('discription').value;
-		const videoTime = document.getElementById("myVideo").currentTime;
 		const timestamp = getTimeStamp()
 		const post = {
 			question: question,
 			discription: discription,
 			postTime: timestamp,
-			videoTime: videoTime,
+			videoTime: videoTimeStamp,
 		}
 		console.log('New Post:')
 		console.log(post)
