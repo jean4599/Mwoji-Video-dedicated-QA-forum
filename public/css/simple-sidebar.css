@@ -18,6 +18,12 @@
     transition: all 0.5s ease;
 }
 
+#menu-toggle {
+    position: absolute;
+    top : 15%;
+    right: 2%;
+}
+
 #wrapper.toggled {
     padding-left: 250px;
 }
