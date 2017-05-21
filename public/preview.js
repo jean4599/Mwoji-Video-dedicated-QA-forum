@@ -44,16 +44,20 @@ $(document).ready(function(){
 		//$(".mainVideoTitle").text("")
 	}
 	UserID = $.query.get('id');
+	url = location.search;
+	fn = $.query.get('fileName');
+	console.log(fn);
 	$(".userName").text(UserID.split("@")[0]);
 	$(".personal").each(function(){
 		var link = $(this).attr("href");
 		$(this).attr("href",link+"id="+UserID);
 	});
+	$(".videoInfo").each(function(){
+		var link = $(this).attr("href");
+		$(this).attr("href",link+"&fileName="+fn);
+	});
 	//$(".personal").attr("href",link + "id=" + UserID);
 	init();
-	url = location.search;
-	fn = $.query.get('fileName');
-	console.log(fn);
 	$(".vdo-log .logo").find("img").attr("src","images/"+fn+".jpg");
 	ref = firebase.database().ref("/videos/videoList");
 	ref.once("value",function(snapshot){

@@ -1,21 +1,33 @@
 var UserID;
+var fileName;
 var cx1, cx2, cy1, cy2;
 $( document ).ready(function() {
 	
-	const videoName = 'video2';
-	const REF_question = 'videos/videoList/'+videoName+'/questions';
+	var videoName ;
+	var REF_question;
 	var posts=[];
 	var videoTimeStamp;
 	//Kamil starts
 	UserID = $.query.get('id');
+	fileName = $.query.get('fileName');
 	$(".userName").text(UserID.split("@")[0]);
 	$(".personal").each(function(){
 		var link = $(this).attr("href");
 		$(this).attr("href",link+"id="+UserID);
 	});
-	//Kamil ends
-	initPost();
-
+	$(".sourceVideo").attr("src","./assets/" + fileName + ".mp4");
+	$("#myVideo").load();
+	console.log("./assets/" + fileName + ".mp4");
+	firebase.database().ref('videos/videoList/').once("value",function(snapshot){
+		snapshot.forEach(function(videoSnap){
+			if(videoSnap.val().fileName == fileName){
+				videoName = videoSnap.key;
+				REF_question = 'videos/videoList/'+videoName+'/questions';
+			}
+		});
+		initPost();
+			
+	});
 	$('#post-btn').on('click',function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
@@ -137,4 +149,5 @@ $( document ).ready(function() {
 		getVideoScreenShot(posts, i-1)
 		}
 	}
+
 })
