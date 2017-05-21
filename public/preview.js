@@ -3,6 +3,18 @@ var url;
 var ref;
 var fn;
 $(document).ready(function(){
+	$(".sidebox-image").click(function(){
+		alert("it worksss!");
+	})
+	$(document).on('mouseenter', '.sidebox-image', function() {
+   		$('html,css').css('cursor','pointer');
+	});
+	$(document).on('mouseleave', '.sidebox-image', function() {
+		$('html,css').css('cursor','default');
+	});
+	$(".submitButton").click(function(){
+		alert("Contructing...");
+	});
 	function initPopular(){
 		var fileName;
 		var ref = firebase.database().ref("/videos/");
@@ -26,7 +38,7 @@ $(document).ready(function(){
 						}
 						$(".sb-video-log").first().before('<div class="sb-vdo-list"">\
 							<div class="sb-vdo-thumb">\
-							<a href="" ><span><img src="images/'+current.fileName+'.jpg" width=80 height=64></img>'+current.length+'</span></a>\
+							<a href="preview.html?fileName='+ current.fileName +'" ><span><img src="images/'+current.fileName+'.jpg" width=80 height=64></img>'+current.length+'</span></a>\
 		                	</div>\
 		                	<div class=\"sb-vdo-info\">\
 		                    <div class=\"sb-vdo-title\"><a href="preview.html?fileName='+ current.fileName +'"><h3>'+current.title+'<\/h3><\/a><\/div>\
