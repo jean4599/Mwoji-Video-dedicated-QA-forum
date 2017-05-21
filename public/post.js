@@ -1,4 +1,5 @@
 var UserID;
+var cx1, cx2, cy1, cy2;
 $( document ).ready(function() {
 	
 	const videoName = 'video2';
@@ -18,22 +19,31 @@ $( document ).ready(function() {
 	$('#post-btn').on('click',function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
-		//get video timestamp at the time that post is clicked
-		videoTimeStamp = document.getElementById("myVideo").currentTime;
 	})
 	$('#cancel-post-btn').on('click', function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
 	})
 	$('#submit-post-btn').on('click', function(){
+
+		//get video timestamp at the time that post is clicked
+		videoTimeStamp = document.getElementById("myVideo").currentTime;
+		
 		const question = document.getElementById('question').value;
 		const discription = document.getElementById('discription').value;
 		const timestamp = getTimeStamp()
+		const circlePosition = { 
+			x1: cx1,
+			y1: cy1,
+			x2: cx2,
+			y2: cy2
+		}
 		const post = {
 			question: question,
 			discription: discription,
 			postTime: timestamp,
 			videoTime: videoTimeStamp,
+			circlePosition: circlePosition
 		}
 		console.log('New Post:')
 		console.log(post)
@@ -111,10 +121,13 @@ $( document ).ready(function() {
 		video.onseeked = function() {
 		var cnvs = document.createElement("canvas");
 		var context = cnvs.getContext("2d");
-		context.drawImage(video, 0, 0, 220, 150);
+		context.drawImage(video, 0, 0, 300, 150);
 		cnvs.id = canvas_id
 		cnvs.style.width = width;
 		cnvs.style.height = height;
+
+		// Draw circle
+		drawEllipse(context, posts[i].circlePosition.x1, posts[i].circlePosition.y1, posts[i].circlePosition.x2, posts[i].circlePosition.y2);
 
 		// Append "cnvs" into the html (where you want)
 		document.getElementById(posts[i].key).appendChild(cnvs);
