@@ -4,7 +4,7 @@ $( document ).ready(function() {
 	var signinBtn = document.getElementById('signin');
 	
 	signinBtn.onclick = function() {
-		alert('signin')
+		//alert('signin')
 		var email = document.getElementById('inputEmail').value;
 		var password = document.getElementById('inputPassword').value;
 
@@ -24,7 +24,9 @@ $( document ).ready(function() {
 	firebase.auth().onAuthStateChanged(function(user) {
   		if (user) {
     		// User is signed in.
-			window.location.href = 'video.html';
+    		var email = user.email;
+    		email = email.toString();
+			window.location.href = 'choosevideo.html?id = ' + email;
   		} else {
     		// No user is signed in.
   		}

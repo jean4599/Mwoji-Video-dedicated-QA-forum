@@ -3,22 +3,7 @@ body {
   padding-bottom: 40px;
   background-color: #eee;
 }
-#signin  {
-position:absolute;
-  top: 6%;
-  left: 80%;
-  width: 90px;
-  height: 40px;
-  font-size: 15px;
-}
-#ClickSign {
-  position:absolute;
-  top: 6%;
-  left: 88%;
-  width:90px;
-  height: 40px;
-  font-size: 14px;
-}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -47,17 +32,9 @@ position:absolute;
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
-  position: absolute;
-  width : 170px;
-  top : 6%;
-  left: 50%;
 }
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  position: absolute;
-  width : 170px;
-  top : 6%;
-  left: 65%;
 }
