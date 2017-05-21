@@ -8,10 +8,51 @@
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
 <link href="./style.css" rel="stylesheet"/>
 <link href="./post.css" rel="stylesheet"/>
 
+
+
+<div id="wrapper">
+
+<!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+<div id="page-content-wrapper">
+<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -121,6 +162,15 @@
      </div>
   </div>
 </div>
+</div>
+</div>
+<!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
   <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
   <script>
     // Initialize Firebase
@@ -139,7 +189,8 @@
   <script src="jquery-plugin-query-object-master/jquery.query-object.js"></script>
   <script src="answer.js"></script> 
   <script src="post.js"></script> 
-  
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script src="circle.js"></script>
 </body>
 </html>
