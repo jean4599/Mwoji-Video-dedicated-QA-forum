@@ -30,6 +30,10 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+p{
+	margin:1em;
+	line-height: 25px;
+}
 body {
 	line-height: 1;
 }

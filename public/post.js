@@ -49,7 +49,7 @@ $( document ).ready(function() {
 			var result = snapshot.val();
 			if(result){
 				clearAllPost();
-				clearAllScreenshot();
+				//clearAllScreenshot();
 				posts = Object.keys(result).map(key =>{
 					result[key].key = key;
 					renderPost(result[key])
