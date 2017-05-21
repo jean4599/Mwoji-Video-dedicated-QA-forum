@@ -1,9 +1,4 @@
 $( document ).ready(function() {
-    v = document.getElementById("myVideo")
-    v.addEventListener( "loadedmetadata", function (e) {
-    var width = this.videoWidth,
-        height = this.videoHeight;
-}, false );
     $("#post-btn").on('click', function() {
         var video = document.getElementById("myVideo");
         canvas = drawableCanvas(video);
@@ -31,8 +26,8 @@ $( document ).ready(function() {
 function drawableCanvas(video) {
     var canvas = document.getElementById("video-canvas");
     ctx = canvas.getContext('2d');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+    canvas.width = $("#myVideo").width();
+    canvas.height = $("#myVideo").height();
     w = canvas.width;
     h = canvas.height;
     var x1, y1;                 /// start points
