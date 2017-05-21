@@ -54,7 +54,9 @@ $(document).ready(function(){
 	
 	UserID = $.query.get('id');
 	$(".userName").text(UserID.split("@")[0]);
-	var link = $(".personal").first().attr("href");
-	$(".personal").attr("href",link + "id=" + UserID);
+	$(".personal").each(function(){
+		var link = $(this).attr("href");
+		$(this).attr("href",link+"id="+UserID);
+	});
 	init();
 });
