@@ -1,17 +1,18 @@
 $( document ).ready(function() {
     $("#post-btn").on('click', function() {
         var video = document.getElementById("myVideo");
-        thecanvas = drawableCanvas(video);
+        thecanvas = drawableCanvas(video, 'drawcanvas');
         ctx = thecanvas.getContext('2d');
         ctx.drawImage(video, 0, 0, w, h);   
-        $("#testposition").append(thecanvas);
+        $(".container").append(thecanvas);
     })
 })
 
 
 
-function drawableCanvas(video) {
+function drawableCanvas(video, canvasid) {
     var canvas = document.createElement("canvas");
+    canvas.setAttribute("id", canvasid);
     ctx = canvas.getContext('2d');
     w = canvas.width;
     h = canvas.height;
@@ -27,13 +28,15 @@ function drawableCanvas(video) {
     	x1 = e.clientX - rect.left;
     	y1 = e.clientY - rect.top;
     	isDown = true;
-    	console.log(x1, y1);
+        cx1 = x1;
+        cy1 = y1;
 	}
 
 	/// clear isDown flag to stop drawing
 	canvas.onmouseup = function() {
     	isDown = false;
-    	console.log(x2, y2);
+        cx2 = x2;
+        cy2 = y2;
 	}
 
 	/// draw ellipse from start point
@@ -49,13 +52,13 @@ function drawableCanvas(video) {
     	ctx.drawImage(video, 0, 0, w, h);
 
     	/// draw ellipse
-    	drawEllipse(x1, y1, x2, y2);
+    	drawEllipse(ctx, x1, y1, x2, y2);
 	}
 
     return canvas;
 }
 
-function drawEllipse(x1, y1, x2, y2) {
+function drawEllipse(ctx, x1, y1, x2, y2) {
 
     var radiusX = (x2 - x1) * 0.5;   /// radius for x based on input
         radiusY = (y2 - y1) * 0.5;   /// radius for y based on input
