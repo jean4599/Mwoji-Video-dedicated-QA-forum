@@ -1,5 +1,17 @@
 $( document ).ready(function() {
-	var canvas = document.getElementById('tutorial');
+    $("#post-btn").on('click', function() {
+        var video = document.getElementById("myVideo");
+        thecanvas = drawableCanvas(video);
+        ctx = thecanvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, w, h);   
+        $("#testposition").append(thecanvas);
+    })
+})
+
+
+
+function drawableCanvas(video) {
+    var canvas = document.createElement("canvas");
     ctx = canvas.getContext('2d');
     w = canvas.width;
     h = canvas.height;
@@ -34,12 +46,14 @@ $( document ).ready(function() {
     	    y2 = e.clientY - rect.top;
 
     	/// clear canvas
-    	ctx.clearRect(0, 0, w, h);
+    	ctx.drawImage(video, 0, 0, w, h);
 
     	/// draw ellipse
     	drawEllipse(x1, y1, x2, y2);
 	}
-})
+
+    return canvas;
+}
 
 function drawEllipse(x1, y1, x2, y2) {
 
