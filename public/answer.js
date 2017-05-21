@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('.answer-btn').click(function(){
+	$('#posts').on('click','.answer-btn', function(){
 		$(this).parents('.post').find('.answer').toggleClass('hide');
 		if($(this).parents('.post').find('.answer').hasClass('hide')){
 			console.log('hide')

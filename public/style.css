@@ -13,7 +13,6 @@
 
 .video-container #myvideo, .video-container object, .video-container embed , #video-canvas{
 	position:absolute;
-	top:50;
 	left:0;
 	width:100%;
 	height:auto;
@@ -28,4 +27,7 @@
   width: 50%;
   position: relative;
   float: left;
+}
+#post-template{
+  display: none;
 }

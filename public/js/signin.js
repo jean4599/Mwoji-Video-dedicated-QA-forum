@@ -51,7 +51,7 @@ $( document ).ready(function() {
     		var cname = "username";
         var cvalue = email;
         
-        //window.location.href = 'choosevideo.html?id=' + email;
+        window.location.href = 'choosevideo.html?id=' + email;
 
   		} else {
     		// No user is signed in.

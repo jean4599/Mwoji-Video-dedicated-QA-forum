@@ -85,7 +85,7 @@ $( document ).ready(function() {
 					renderPost(result[key])
 					return result[key];
 				})
-				console.log(posts)
+				//console.log(posts)
 				getVideoScreenShot(posts, posts.length-1)
 			}
 		})
@@ -99,6 +99,9 @@ $( document ).ready(function() {
 	function renderPost(post){
 
 		var newPost = $('#post-template').clone();
+		newPost.find('.question').html(post.question);
+		newPost.attr('id', post.key);
+		newPost.find('.description').html(post.discription);
 		
 		var post = "<div class='panel panel-default' id='"+post.key+"'>"+
 		          "<div class='panel-heading'>"+
@@ -108,7 +111,7 @@ $( document ).ready(function() {
 		            post.discription+
 		          "</div></div>";
 		
-		$('#posts').append(post);
+		$('#posts').append(newPost);
 		
 	}
 	function getTimeStamp(){
@@ -142,7 +145,8 @@ $( document ).ready(function() {
 		drawEllipse(context, posts[i].circlePosition.x1, posts[i].circlePosition.y1, posts[i].circlePosition.x2, posts[i].circlePosition.y2);
 
 		// Append "cnvs" into the html (where you want)
-		document.getElementById(posts[i].key).appendChild(cnvs);
+		var post = document.getElementById(posts[i].key);
+		$(post).find('.screenshot').append(cnvs);
 
 		video.currentTime = curtime;
 		video.onseeked = null;
