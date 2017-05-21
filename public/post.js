@@ -19,14 +19,16 @@ $( document ).ready(function() {
 	$('#post-btn').on('click',function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
-		//get video timestamp at the time that post is clicked
-		videoTimeStamp = document.getElementById("myVideo").currentTime;
 	})
 	$('#cancel-post-btn').on('click', function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
 	})
 	$('#submit-post-btn').on('click', function(){
+
+		//get video timestamp at the time that post is clicked
+		videoTimeStamp = document.getElementById("myVideo").currentTime;
+		
 		const question = document.getElementById('question').value;
 		const discription = document.getElementById('discription').value;
 		const timestamp = getTimeStamp()
