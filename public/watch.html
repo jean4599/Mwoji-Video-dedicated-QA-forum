@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Mwoji</a>
+      <a class="navbar-brand personal" href="choosevideo.html?">Mwoji</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,16 +35,6 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Log out</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Setting <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -55,6 +45,39 @@
       
       <div id='overview'>
         <div id='posts'></div>
+        <!-- A template for post -->
+          <div class='post panel panel-default' id='post-template'>
+              
+              <div class='panel-heading'>
+                <h3 class='panel-title'>Question</h3>
+              </div>
+
+              <div class='panel-body'>
+                <div class="row">
+                  <!-- screenshot/left -->
+                  <div class='screenshot col-md-6 col-xs-6'>
+                    <image src='./images/logo.png'/>
+                  </div>
+                  <!-- Description and answer/right -->
+                  <div class='post-content col-md-6 col-xs-6'>
+                    <p class='description'>Description</p>
+                    <div class='top-answer'>Best answer: 
+                      <p class='answer'>No answer yet</p>
+                    </div> 
+                    <button type="button" class="btn btn-default answer-btn">Answer / See more</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Answer list -->
+              <ul class="list-group answer">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+              </ul>
+          </div>
+
         <button id='post-btn' class="btn btn-info btn-lg btn-block"> Post a question</button>
       </div>
 
@@ -80,7 +103,7 @@
     </div>
 
     <div class='col-md-8 col-xs-8'>
-         <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-heart-empty"></span> Add video to my favorite</a>
+         <!-- <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-heart-empty"></span> Add video to my favorite</a> -->
          
          <div class='video-container'>
            <video id="myVideo" controls>
@@ -91,7 +114,6 @@
      </div>
   </div>
 </div>
-<div id="testposition"> Here </div>
   <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
   <script>
     // Initialize Firebase
@@ -107,6 +129,9 @@
   </script>
   <script src="jquery/js/jquery-1.9.0.min.js"></script>
   <script src="jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-  <script src="post.js"></script>
+
+  <script src="jquery-plugin-query-object-master/jquery.query-object.js"></script>
+  <script src="post.js"></script> 
+  <script src="circle.js"></script>
 </body>
 </html>

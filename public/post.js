@@ -1,10 +1,18 @@
+var UserID;
 $( document ).ready(function() {
 	
 	const videoName = 'video2';
 	const REF_question = 'videos/videoList/'+videoName+'/questions';
 	var posts=[];
 	var videoTimeStamp;
-
+	//Kamil starts
+	UserID = $.query.get('id');
+	$(".userName").text(UserID.split("@")[0]);
+	$(".personal").each(function(){
+		var link = $(this).attr("href");
+		$(this).attr("href",link+"id="+UserID);
+	});
+	//Kamil ends
 	initPost();
 
 	$('#post-btn').on('click',function(){
@@ -49,7 +57,7 @@ $( document ).ready(function() {
 			var result = snapshot.val();
 			if(result){
 				clearAllPost();
-				clearAllScreenshot();
+				//clearAllScreenshot();
 				posts = Object.keys(result).map(key =>{
 					result[key].key = key;
 					renderPost(result[key])

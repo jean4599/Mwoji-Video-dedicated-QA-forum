@@ -14,3 +14,22 @@
 	height: 90%;
 	overflow-y: scroll;
 }
+img, canvas{
+	max-height: 100%;
+	max-width: 100%;
+}
+.answer-btn{
+	position: absolute;
+	bottom: 5px;
+}
+.post .panel-body{
+	height:200px;
+}
+.post .post-content{
+	height: 100%;
+}
+.top-answer{
+	padding:2px;
+	border-radius: 2px;
+	background-color: #EEEEEE;
+}
