@@ -27,6 +27,7 @@ $( document ).ready(function() {
     		var email = user.email;
     		email = email.toString();
 			window.location.href = 'choosevideo.html?id = ' + email;
+
   		} else {
     		// No user is signed in.
   		}
