@@ -19,7 +19,8 @@ img, canvas{
 	max-width: 100%;
 }
 .answer-btn{
-	position: absolute;
+	width: 100%;
+	overflow-x: auto;
 	bottom: 5px;
 }
 .post .panel-body{
