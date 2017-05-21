@@ -26,7 +26,7 @@ $( document ).ready(function() {
     		// User is signed in.
     		var email = user.email;
     		email = email.toString();
-			window.location.href = 'choosevideo.html?id = ' + email;
+			window.location.href = 'choosevideo.html?id=' + email;
 
   		} else {
     		// No user is signed in.
