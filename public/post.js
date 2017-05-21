@@ -76,7 +76,9 @@ $( document ).ready(function() {
 	}
 	function renderPost(post){
 
-		var newPost = "<div class='panel panel-default' id='"+post.key+"'>"+
+		var newPost = $('#post-template').clone();
+		
+		var post = "<div class='panel panel-default' id='"+post.key+"'>"+
 		          "<div class='panel-heading'>"+
 		            "<h3 class='panel-title'>"+post.question+
 		          "</h3></div>"+
