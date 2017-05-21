@@ -12,6 +12,9 @@ $(document).ready(function(){
 	$(document).on('mouseleave', '.sidebox-image', function() {
 		$('html,css').css('cursor','default');
 	});
+	$(".submitButton").click(function(){
+		alert("Contructing...");
+	});
 	function init(){
 		ref = firebase.database().ref("/videos/");
 		

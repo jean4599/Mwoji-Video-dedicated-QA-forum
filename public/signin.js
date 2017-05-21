@@ -24,7 +24,7 @@ $( document ).ready(function() {
 	firebase.auth().onAuthStateChanged(function(user) {
   		if (user) {
     		// User is signed in.
-			window.location.href = 'video.html';
+			window.location.href = 'choosevideo.html';
   		} else {
     		// No user is signed in.
   		}
