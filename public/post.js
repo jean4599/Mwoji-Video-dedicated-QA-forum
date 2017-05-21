@@ -1,10 +1,10 @@
 var UserID;
 var fileName;
+var REF_question;
 var cx1, cx2, cy1, cy2;
 $( document ).ready(function() {
 	
 	var videoName;
-	var REF_question;
 	var posts=[];
 	var videoTimeStamp;
 	//Kamil starts
