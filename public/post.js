@@ -1,6 +1,7 @@
 var UserID;
 var fileName;
 var REF_question;
+var question_num = 0;
 var cx1, cx2, cy1, cy2;
 $( document ).ready(function() {
 	
@@ -77,7 +78,9 @@ $( document ).ready(function() {
 	function initPost(){
 		firebase.database().ref(REF_question).on('value', function(snapshot){
 			var result = snapshot.val();
-			if(result){
+			if(result.length != question_num){
+				question_num = result.length;
+
 				clearAllPost();
 				//clearAllScreenshot();
 				posts = Object.keys(result).map(key =>{

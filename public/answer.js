@@ -3,9 +3,9 @@ $(document).ready(function(){
 		let post = $(this).parents('.post');
 		let postId = post.attr('id');
 		// change css
-		post.find('.answers').toggleClass('hide');
+		post.find('.answers-container').toggleClass('hide');
 		//check whether it's show or hide
-		if(post.find('.answers').hasClass('hide')){ //if it is hided
+		if(post.find('.answers-container').hasClass('hide')){ //if it is hided
 			$(this).html('Answer / See more <span class="glyphicon glyphicon-chevron-down">');
 		}
 		else{ //if it is shown
@@ -18,15 +18,14 @@ $(document).ready(function(){
 				snapshot.forEach(function(answerSnap){
 					answer = answerSnap.val();
 					ele ='<li class="list-group-item answer">'+answer.answer+'</li>'
-					console.log(answer)
-					post.find('.answers').prepend(ele)
+					post.find('.answers').append(ele)
 				})
 			})
 			$(this).html('Close <span class="glyphicon glyphicon-chevron-up">');
 		}
 	})
 
-	$('#posts').on('keydown','.answers input', function(e){
+	$('#posts').on('keydown','.answers-container input', function(e){
 		let post = $(this).parents('.post');
 		let postId = post.attr('id');
 
@@ -38,6 +37,11 @@ $(document).ready(function(){
 	function saveAnswer(answer, postId){
 		firebase.database().ref(REF_question+'/'+postId+'/answers/').push({
 			answer: answer
+		}).then(function(){
+			var post = document.getElementById(postId)
+			ele ='<li class="list-group-item answer">'+answer+'</li>'
+			$(post).find('.answers').append(ele)
+			$(post).find('input').val('')
 		})
 	}
 })

@@ -34,3 +34,6 @@ img, canvas{
 	border-radius: 2px;
 	background-color: #EEEEEE;
 }
+.list-group{
+	margin-bottom: 1px;
+}
