@@ -52,8 +52,8 @@ $(document).ready(function(){
 		//$(".mainVideoTitle").text("")
 	}
 	
-	UserID = $.query.get('id');
-	$(".userName").text(UserID.split("@")[0]);
+	UserID = $.query.get('id').split("@")[0];
+	$(".userName").text(UserID);
 	$(".personal").each(function(){
 		var link = $(this).attr("href");
 		$(this).attr("href",link+"id="+UserID);

@@ -1,4 +1,5 @@
 var UserID;
+var fileName;
 $( document ).ready(function() {
 	
 	const videoName = 'video2';
@@ -7,11 +8,14 @@ $( document ).ready(function() {
 	var videoTimeStamp;
 	//Kamil starts
 	UserID = $.query.get('id');
+	fileName = $.query.get('fileName');
 	$(".userName").text(UserID.split("@")[0]);
 	$(".personal").each(function(){
 		var link = $(this).attr("href");
 		$(this).attr("href",link+"id="+UserID);
 	});
+	$(".sourceVideo").attr("src","./assets/" + fileName + ".mp4");
+	console.log("./assets/" + fileName + ".mp4");
 	//Kamil ends
 	initPost();
 
