@@ -13,7 +13,7 @@ Issues 5/22
 12. Remove "preview.html"?
 13. Handle not drawing red circle.
 14. Sort questions by videoTime.
-15. Resolve weird video loading problem (Add an invisible video)
+(Done)15. Resolve weird video loading problem (Add an invisible video)
 16. Change logo? (Logo looks like four buttons)
 17. Implement rating answers
 18. Show "Best answer"

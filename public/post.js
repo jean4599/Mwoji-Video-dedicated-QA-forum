@@ -17,7 +17,7 @@ $( document ).ready(function() {
 		$(this).attr("href",link+"id="+UserID);
 	});
 	$(".sourceVideo").attr("src","./assets/" + fileName + ".mp4");
-	$("#myVideo").load();
+	$(".video").load();
 	console.log("./assets/" + fileName + ".mp4");
 	firebase.database().ref('videos/videoList/').once("value",function(snapshot){
 		snapshot.forEach(function(videoSnap){
@@ -131,7 +131,7 @@ $( document ).ready(function() {
 		if (i < 0) {
 			return;
 		}
-		var video = document.getElementById("myVideo");
+		var video = document.getElementById("hiddenVideo");
 		var cnvs;
 		var curtime = video.currentTime;
 
