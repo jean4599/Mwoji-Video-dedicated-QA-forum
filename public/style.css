@@ -19,6 +19,7 @@
 }
 #video-canvas{
   z-index: -1;
+  cursor: url(images/pencil.png), auto;
 }
 
 .screenshots{
