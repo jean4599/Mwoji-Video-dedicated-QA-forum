@@ -32,6 +32,7 @@ $( document ).ready(function() {
 	$('#post-btn').on('click',function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
+		cx1 = 0; cx2 = 0; cy1 = 0; cy2 = 0;
 	})
 	$('#cancel-post-btn').on('click', function(){
 		$('#ask').toggleClass('hide');
