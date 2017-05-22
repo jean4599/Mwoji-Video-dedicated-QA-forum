@@ -78,8 +78,8 @@ $( document ).ready(function() {
 	function initPost(){
 		firebase.database().ref(REF_question).on('value', function(snapshot){
 			var result = snapshot.val();
-			if(result.length != question_num){
-				question_num = result.length;
+			if(snapshot.numChildren() != question_num){
+				question_num = snapshot.numChildren();
 
 				clearAllPost();
 				//clearAllScreenshot();
