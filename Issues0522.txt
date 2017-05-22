@@ -5,13 +5,13 @@ Issues 5/22
 4. Add OK button to answering part
 5. Change css of "answer" using 'word-wrap: break-word' so that we can handle longer answers.
 6. Filter "My questions"
-7. More affordance for drawing red circle (how?)
+(Done)7. More affordance for drawing red circle (how?)
 8. Support mobile devices. (Can be ignored)
 9. Moving the red circle after drawing it
 10. Main page (choosevideo.html) redesigning for more affordance for searching videos
 11. Give more readability to our descriptions. Highlight, Short summary...
 12. Remove "preview.html"?
-13. Handle not drawing red circle.
+(Done)13. Handle not drawing red circle.
 14. Sort questions by videoTime.
 (Done)15. Resolve weird video loading problem (Add an invisible video)
 16. Change logo? (Logo looks like four buttons)
