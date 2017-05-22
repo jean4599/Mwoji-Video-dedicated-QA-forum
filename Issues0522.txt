@@ -1,0 +1,23 @@
+Issues 5/22
+1. If user clicks a question, set currentTime of video to the videoTime of the question.
+2. If user clicks a question, give new expanded screen which shows the contents of the question.
+3. Implement searching question by keywords
+4. Add OK button to answering part
+5. Change css of "answer" using 'word-wrap: break-word' so that we can handle longer answers.
+6. Filter "My questions"
+7. More affordance for drawing red circle (how?)
+8. Support mobile devices. (Can be ignored)
+9. Moving the red circle after drawing it
+10. Main page (choosevideo.html) redesigning for more affordance for searching videos
+11. Give more readability to our descriptions. Highlight, Short summary...
+12. Remove "preview.html"?
+13. Handle not drawing red circle.
+14. Sort questions by videoTime.
+15. Resolve weird video loading problem (Add an invisible video)
+16. Change logo? (Logo looks like four buttons)
+17. Implement rating answers
+18. Show "Best answer"
+19. Implement deleting my questions or answers.
+20. Change cursor type on "left help bar" (Represent it is not clickable)
+21. Consistent layouts
+22. Give an alert when user failed to sign in.
