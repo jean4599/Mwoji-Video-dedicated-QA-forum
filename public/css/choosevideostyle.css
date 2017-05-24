@@ -290,6 +290,7 @@ a:hover{
 	float:left;
 	width:670px;
 	padding:0 20px 20px 0;
+	position: relative;
 }
 /* video */
 #button{

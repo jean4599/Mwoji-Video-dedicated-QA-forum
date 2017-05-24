@@ -29,6 +29,11 @@ $( document ).ready(function() {
 		initPost();
 			
 	});
+
+    $('#myVideo').click(function() {
+        this.paused ? this.play() : this.pause();
+    });
+
 	$('#post-btn').on('click',function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
