@@ -1,3 +1,8 @@
+
+.like_button {
+	position: relative;
+	left: 80%;
+}
 .left{
 	height:100%;
 	padding: 10px;

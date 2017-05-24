@@ -1,3 +1,4 @@
+var UserID;
 $(document).ready(function(){
 	$('#posts').on('click','.answer-btn', function(){
 		let post = $(this).parents('.post');
@@ -17,8 +18,19 @@ $(document).ready(function(){
 				var answer;
 				snapshot.forEach(function(answerSnap){
 					answer = answerSnap.val();
-					ele ='<li class="list-group-item answer">'+answer.answer+'</li>'
-					post.find('.answers').append(ele)
+					var count = 0;
+					firebase.database().ref('likes/' + answerSnap.key + '/').once('value').then(function(snapshot){
+						snapshot.forEach(function(answerSnap){
+							count = count + 1;
+							console.log(count);
+						})
+
+						var LikeButton = '<div class="like_button"><button>Like</button><span class="count">' +count +'</span></div>'
+						ele ='<li class="list-group-item answer" id="'+answerSnap.key+'">'+answer.answer+LikeButton+'</li>'
+					
+						post.find('.answers').append(ele)
+					})
+
 				})
 			})
 			$(this).html('Close <span class="glyphicon glyphicon-chevron-up">');
@@ -56,14 +68,34 @@ $(document).ready(function(){
 		}
 	
 	}
+	$('#posts').on('click','.like_button button', function(){
+		var $count = $(this).parent().find('.count');			
+		let answer = $(this).parents('.answer');
+  		let answerId = answer.attr('id');
+  		console.log(answerId);
+  		console.log(UserID);
+		firebase.database().ref('likes/' + answerId + '/' + UserID + '/').once('value').then(function(snapshot){
+				console.log(snapshot);
+				if (snapshot.val() == null) {
+					var newAnswerKey = firebase.database().ref('likes/' + answerId + '/' + UserID + '/').push("1").then(function(){
+						$count.html($count.html() * 1 + 1);
+					})
+				}
+				else {
+					console.log("Exist");
+				}
+		})
+	});
 
 	function saveAnswer(answer, postId){
 		if(answer=='')return 
-		firebase.database().ref(REF_question+'/'+postId+'/answers/').push({
-			answer: answer
-		}).then(function(){
-			var post = document.getElementById(postId)
-			ele ='<li class="list-group-item answer">'+answer+'</li>'
+		var newAnswerKey = firebase.database().ref(REF_question+'/'+postId+'/answers/').push().key;
+		var updates = {};
+		updates[newAnswerKey] = {answer:answer};
+		firebase.database().ref(REF_question+'/'+postId+'/answers/').update(updates).then(function(){
+			var post = document.getElementById(postId);
+			var LikeButton = '<div class="like_button"><button>Like</button><span class="count">0</span></div>'
+			ele ='<li class="list-group-item answer" id ="' + newAnswerKey + '">' +answer+LikeButton+'</li>'
 			$(post).find('.answers').append(ele)
 			$(post).find('input').val('')
 		})
