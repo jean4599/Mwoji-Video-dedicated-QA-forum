@@ -32,3 +32,11 @@
 #post-template{
   display: none;
 }
+.hova {
+    background-color: rgba(255, 20, 147, 0.3);
+}
+
+#drawhere {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 200%;
+}

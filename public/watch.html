@@ -20,9 +20,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        This is help menu:
-                    </a>
+                    How to post a question?
                 </li>
                 <li>
                     1)Watch the video
@@ -40,7 +38,7 @@
                     5)Input a detailed explanation
                 </li>
                 <li>
-                    6)Click "post"</a>
+                    6)Click "post"
                 </li>
                 
             </ul>
@@ -150,10 +148,14 @@
          
          <div class='video-container'>
            <canvas id='video-canvas'></canvas>
-           <video id="myVideo" controls>
+           <video id="hiddenVideo" class="video" style="display: none">
+           <source class="sourceVideo" src="./assets/Wildlife.mp4" type="video/mp4">
+           </video>
+           <video id="myVideo" class="video" controls>
             <source class="sourceVideo" src="./assets/Wildlife.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
           </video>
+          <p id="drawhere" style="display: none; position: absolute; top: 30">Mark on the Video!</p>
          </div>
      </div>
   </div>

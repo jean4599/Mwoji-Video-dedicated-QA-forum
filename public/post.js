@@ -17,7 +17,7 @@ $( document ).ready(function() {
 		$(this).attr("href",link+"id="+UserID);
 	});
 	$(".sourceVideo").attr("src","./assets/" + fileName + ".mp4");
-	$("#myVideo").load();
+	$(".video").load();
 	console.log("./assets/" + fileName + ".mp4");
 	firebase.database().ref('videos/videoList/').once("value",function(snapshot){
 		snapshot.forEach(function(videoSnap){
@@ -32,10 +32,24 @@ $( document ).ready(function() {
 	$('#post-btn').on('click',function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
+		cx1 = 0; cx2 = 0; cy1 = 0; cy2 = 0;
+		$('#drawhere').css('display', 'inline');
 	})
+
+	$('#video-canvas').mouseover(function(e) {
+		$(".hova").removeClass("hova");     
+    	$(e.target).addClass("hova");
+    	$("#drawhere").css('opacity', 0.2);
+  		return false;
+	}).mouseout(function(e) {
+    	$(this).removeClass("hova");
+    	$("#drawhere").css('opacity', 1);
+	});
+
 	$('#cancel-post-btn').on('click', function(){
 		$('#ask').toggleClass('hide');
 		$('#overview').toggleClass('hide');
+		$('#drawhere').css('display', 'none');
 	})
 	$('#submit-post-btn').on('click', function(){
 
@@ -67,6 +81,7 @@ $( document ).ready(function() {
 		$('#overview').toggleClass('hide');
 		document.getElementById('question').value='';
 		document.getElementById('discription').value='';
+		$('#drawhere').css('display', 'none');
 	})
 
 	function savePost(post){
@@ -131,7 +146,7 @@ $( document ).ready(function() {
 		if (i < 0) {
 			return;
 		}
-		var video = document.getElementById("myVideo");
+		var video = document.getElementById("hiddenVideo");
 		var cnvs;
 		var curtime = video.currentTime;
 
