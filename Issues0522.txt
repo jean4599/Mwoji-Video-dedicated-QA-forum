@@ -10,7 +10,7 @@ Issues 5/22
 9. Moving the red circle after drawing it
 10. Main page (choosevideo.html) redesigning for more affordance for searching videos
 11. Give more readability to our descriptions. Highlight, Short summary...
-12. Remove "preview.html"?
+(done)12. Remove "preview.html"?
 (Done)13. Handle not drawing red circle.
 14. Sort questions by videoTime.
 (Done)15. Resolve weird video loading problem (Add an invisible video)
