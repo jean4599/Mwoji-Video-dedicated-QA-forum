@@ -75,7 +75,8 @@ $( document ).ready(function() {
 			discription: discription,
 			postTime: timestamp,
 			videoTime: videoTimeStamp,
-			circlePosition: circlePosition
+			circlePosition: circlePosition,
+			UserID: UserID
 		}
 		console.log('New Post:')
 		console.log(post)
@@ -88,6 +89,23 @@ $( document ).ready(function() {
 		document.getElementById('discription').value='';
 		$('#drawhere').css('display', 'none');
 	})
+	$("#seeall").on('click',function(){
+		console.log("ON");
+		$(".panel-default").show();
+		$("#post-template").hide();
+	})
+	$("#seemine").on('click',function(){
+		console.log("MY");
+		$(".panel-default").each(function(){
+			console.log(this);
+			if($(this).attr("UserID") == UserID)
+				$(this).show();	
+			else
+				$(this).hide();
+		});
+
+	})
+
 
 	var video = document.getElementById("myVideo");
 	var x;
@@ -158,10 +176,13 @@ $( document ).ready(function() {
 	function renderPost(post){
 
 		var newPost = $('#post-template').clone();
-		newPost.find('.question').html(post.question);
+		newPost.find('.question').html(post.question+"<div class='text-align-right'>Posted by:"+post.UserID+"</div>");
+		
 		newPost.attr('id', post.id);
 		newPost.find('.description').html(post.discription);
 		newPost.attr('time', post.videoTime)
+		newPost.attr('UserID', post.UserID)
+		
 		
 		$('#posts').append(newPost);
 		
