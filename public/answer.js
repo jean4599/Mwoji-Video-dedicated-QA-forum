@@ -25,6 +25,12 @@ $(document).ready(function(){
 		}
 	})
 
+	$('#posts').on('click','.submit-answer', function(e){
+		let post = $(this).parents('.post');
+		let postId = post.attr('id');
+		let value = $(post).find('input').val()
+		saveAnswer(value, postId)
+	})
 	$('#posts').on('keydown','.answers-container input', function(e){
 		let post = $(this).parents('.post');
 		let postId = post.attr('id');
@@ -35,6 +41,7 @@ $(document).ready(function(){
 		}
 	})
 	function saveAnswer(answer, postId){
+		if(answer=='')return 
 		firebase.database().ref(REF_question+'/'+postId+'/answers/').push({
 			answer: answer
 		}).then(function(){

@@ -40,3 +40,10 @@ img, canvas{
 .answers-container input{
 	width:100%;
 }
+.highlight{
+	background-color: yellow;
+}
+.time-btn{
+	color: orangered;
+    cursor: pointer;
+}

@@ -51,6 +51,11 @@ $( document ).ready(function() {
 		$('#overview').toggleClass('hide');
 		$('#drawhere').css('display', 'none');
 	})
+	$('#posts').on('click','.time-btn',function(){
+		var time = $(this).parents('.post').attr('time');
+		console.log(time)
+		video.currentTime = time
+	})
 	$('#submit-post-btn').on('click', function(){
 
 		//get video timestamp at the time that post is clicked
@@ -84,6 +89,35 @@ $( document ).ready(function() {
 		$('#drawhere').css('display', 'none');
 	})
 
+	var video = document.getElementById("myVideo");
+	var x;
+	var currentVideoTime;
+	var cor = $('#posts').offset().top;
+	video.onplay = function(){
+		//console.log('v')
+		x=window.setInterval(function() {
+			currentVideoTime = video.currentTime;
+			for(var i=0; i<posts.length-1; i++){
+				if( currentVideoTime+1 > posts[i].videoTime &&
+					posts[i].videoTime > currentVideoTime-1){
+					//console.log(posts[i])
+					$('#'+posts[i].id).addClass("highlight")
+					// $('#posts').animate({
+	    //                 scrollTop: $('#'+posts[i].id).offset().top-cor
+	    //             }, 1000);		
+				}
+				else {
+					$('#'+posts[i].id).removeClass("highlight")
+				}
+			}
+		},100);
+	}
+	video.onpause = function(){
+		window.clearInterval(x);
+	}
+	video.onended = function(){
+		clearInterval(x);
+	}
 	function savePost(post){
 		console.log('Firebase save: ')
 		console.log(post)
@@ -91,18 +125,24 @@ $( document ).ready(function() {
 	}
 
 	function initPost(){
-		firebase.database().ref(REF_question).on('value', function(snapshot){
+		firebase.database().ref(REF_question).orderByChild('videoTime').on('value', function(snapshot){
 			var result = snapshot.val();
 			if(snapshot.numChildren() != question_num){
 				question_num = snapshot.numChildren();
 
 				clearAllPost();
 				//clearAllScreenshot();
-				posts = Object.keys(result).map(key =>{
-					result[key].key = key;
-					renderPost(result[key])
-					return result[key];
+				snapshot.forEach(function(postSnap){
+					let post = postSnap.val();
+					post.id = postSnap.key;
+					posts.push(post)
+					renderPost(post)
 				})
+				// posts = Object.keys(result).map(key =>{
+				// 	result[key].key = key;
+				// 	renderPost(result[key])
+				// 	return result[key];
+				// })
 				//console.log(posts)
 				getVideoScreenShot(posts, posts.length-1)
 			}
@@ -112,22 +152,16 @@ $( document ).ready(function() {
 		$('#testposition').children().remove();
 	}
 	function clearAllPost(){
+		posts=[]
 		$('#posts').children().remove();
 	}
 	function renderPost(post){
 
 		var newPost = $('#post-template').clone();
 		newPost.find('.question').html(post.question);
-		newPost.attr('id', post.key);
+		newPost.attr('id', post.id);
 		newPost.find('.description').html(post.discription);
-		
-		var post = "<div class='panel panel-default' id='"+post.key+"'>"+
-		          "<div class='panel-heading'>"+
-		            "<h3 class='panel-title'>"+post.question+
-		          "</h3></div>"+
-		          "<div class='panel-body'>"+
-		            post.discription+
-		          "</div></div>";
+		newPost.attr('time', post.videoTime)
 		
 		$('#posts').append(newPost);
 		
@@ -146,6 +180,7 @@ $( document ).ready(function() {
 		if (i < 0) {
 			return;
 		}
+		console.log('video screenshot')
 		var video = document.getElementById("hiddenVideo");
 		var cnvs;
 		var curtime = video.currentTime;
@@ -163,7 +198,7 @@ $( document ).ready(function() {
 		drawEllipse(context, posts[i].circlePosition.x1, posts[i].circlePosition.y1, posts[i].circlePosition.x2, posts[i].circlePosition.y2);
 
 		// Append "cnvs" into the html (where you want)
-		var post = document.getElementById(posts[i].key);
+		var post = document.getElementById(posts[i].id);
 		$(post).find('.screenshot').append(cnvs);
 
 		video.currentTime = curtime;
