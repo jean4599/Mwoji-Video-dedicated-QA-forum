@@ -1,4 +1,5 @@
 var UserID;
+
 $(document).ready(function(){
 	$('#posts').on('click','.answer-btn', function(){
 		let post = $(this).parents('.post');
@@ -18,24 +19,20 @@ $(document).ready(function(){
 				var answer;
 				snapshot.forEach(function(answerSnap){
 					answer = answerSnap.val();
-<<<<<<< HEAD
 					var count = 0;
+					console.log(answer.answer);
 					firebase.database().ref('likes/' + answerSnap.key + '/').once('value').then(function(snapshot){
 						snapshot.forEach(function(answerSnap){
 							count = count + 1;
 							console.log(count);
 						})
-
 						var LikeButton = '<div class="like_button"><button>Like</button><span class="count">' +count +'</span></div>'
-						ele ='<li class="list-group-item answer" id="'+answerSnap.key+'">'+answer.answer+LikeButton+'</li>'
+						ele ='<li class="list-group-item answer" id="'+answerSnap.key+'">'+answerSnap.val().answer+LikeButton+'</li>'
 					
 						post.find('.answers').append(ele)
 					})
 
-=======
-					ele ='<li class="list-group-item answer" style="word-wrap: break-word">'+answer.answer+'</li>'
-					post.find('.answers').append(ele)
->>>>>>> 344459cd12f3205684f1db844d5fdd126154480d
+						
 				})
 			})
 			$(this).html('Close <span class="glyphicon glyphicon-chevron-up">');
