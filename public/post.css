@@ -37,3 +37,6 @@ img, canvas{
 .list-group{
 	margin-bottom: 1px;
 }
+.answers-container input{
+	width:100%;
+}
