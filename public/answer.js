@@ -40,6 +40,23 @@ $(document).ready(function(){
 			saveAnswer(value, postId)
 		}
 	})
+
+	Logout();
+
+	function Logout() {
+		var LogoutBtn = document.getElementById('logout');
+	
+		LogoutBtn.onclick = function() {
+			firebase.auth().signOut().then(function() {
+  				// Sign-out successful.
+  				window.location.href = "index.html";
+			}).catch(function(error) {
+  			// An error happened.
+			});
+		}
+	
+	}
+
 	function saveAnswer(answer, postId){
 		if(answer=='')return 
 		firebase.database().ref(REF_question+'/'+postId+'/answers/').push({
