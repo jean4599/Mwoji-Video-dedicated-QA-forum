@@ -3,7 +3,7 @@ Issues 5/22
 # 2. If user clicks a question, give new expanded screen which shows the contents of the question.
 3. Implement searching question by keywords
 (Done) 4. Add OK button to answering part
-5. Change css of "answer" using 'word-wrap: break-word' so that we can handle longer answers.
+(done) 5. Change css of "answer" using 'word-wrap: break-word' so that we can handle longer answers.
 # 6. Filter "My questions"
 (Done)7. More affordance for drawing red circle (how?)
 9. Moving the red circle after drawing it

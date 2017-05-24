@@ -17,7 +17,7 @@ $(document).ready(function(){
 				var answer;
 				snapshot.forEach(function(answerSnap){
 					answer = answerSnap.val();
-					ele ='<li class="list-group-item answer">'+answer.answer+'</li>'
+					ele ='<li class="list-group-item answer" style="word-wrap: break-word">'+answer.answer+'</li>'
 					post.find('.answers').append(ele)
 				})
 			})
