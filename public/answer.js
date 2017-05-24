@@ -18,6 +18,7 @@ $(document).ready(function(){
 				var answer;
 				snapshot.forEach(function(answerSnap){
 					answer = answerSnap.val();
+<<<<<<< HEAD
 					var count = 0;
 					firebase.database().ref('likes/' + answerSnap.key + '/').once('value').then(function(snapshot){
 						snapshot.forEach(function(answerSnap){
@@ -31,6 +32,10 @@ $(document).ready(function(){
 						post.find('.answers').append(ele)
 					})
 
+=======
+					ele ='<li class="list-group-item answer" style="word-wrap: break-word">'+answer.answer+'</li>'
+					post.find('.answers').append(ele)
+>>>>>>> 344459cd12f3205684f1db844d5fdd126154480d
 				})
 			})
 			$(this).html('Close <span class="glyphicon glyphicon-chevron-up">');

@@ -38,6 +38,9 @@ $( document ).ready(function() {
   			if (errorCode == 'auth/invalid-email') {
   				alert("Enter a valid email");
   			}
+        else if(errorCode) {
+          alert("Invalid email or password")
+        }
   			// ...
 		});
 		

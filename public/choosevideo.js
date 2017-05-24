@@ -1,5 +1,4 @@
-var fileName;
-var ref;
+var fileName; var ref;
 var maxViewed ="psy";
 var UserID;
 $(document).ready(function(){
@@ -35,10 +34,10 @@ $(document).ready(function(){
 					$(".video-player").find("img").attr("src","images/" + current.fileName+ ".jpg");
 				}
 				$(".videoList .heading").after('<div class=\"vdo-list\"><div class=\"vdo-thumb\">\
-					<a href="preview.html?fileName='+current.fileName+'&id='+UserID+'" ><span><img src="images/'+current.fileName+'.jpg" width=125 height=100></img>'+current.length+'</span></a>\
+					<a href="watch.html?fileName='+current.fileName+'&id='+UserID+'" ><span><img src="images/'+current.fileName+'.jpg" width=125 height=100></img>'+current.length+'</span></a>\
                 	</div>\
                 	<div class=\"vdo-info\">\
-                    <div class=\"vdo-title\"><a class="personal" href="preview.html?fileName='+current.fileName+'&id=' +UserID+'"><h3>'+current.title+'<\/h3><\/a><\/div>\
+                    <div class=\"vdo-title\"><a class="personal" href="watch.html?fileName='+current.fileName+'&id=' +UserID+'"><h3>'+current.title+'<\/h3><\/a><\/div>\
                     <div class=\"vdo-desc\">' + current.description+ '</div>\
                     <div class=\"vdo-detail\">10 minutes ago <span>|</span>' +current.questionCount +' questions <span>|</span> '+current.watched+' views</div>\
                 </div>\
@@ -60,3 +59,4 @@ $(document).ready(function(){
 	});
 	init();
 });
+
