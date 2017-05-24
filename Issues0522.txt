@@ -21,3 +21,4 @@ Issues 5/22
 20. Change cursor type on "left help bar" (Represent it is not clickable)
 21. Consistent layouts
 22. Give an alert when user failed to sign in.
+23. Log out button (Done)
