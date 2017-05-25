@@ -15,6 +15,14 @@ $(document).ready(function(){
 	$(".submitButton").click(function(){
 		alert("Contructing...");
 	});
+	document.getElementById('logout').onclick = function() {
+		firebase.auth().signOut().then(function() {
+				// Sign-out successful.
+				window.location.href = "index.html";
+		}).catch(function(error) {
+			// An error happened.
+		});
+	}
 	function init(){
 		
 	}

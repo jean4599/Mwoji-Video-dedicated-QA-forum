@@ -14,6 +14,15 @@ $(document).ready(function(){
 	$(".submitButton").click(function(){
 		alert("Contructing...");
 	});
+	document.getElementById('logout').onclick = function() {
+		firebase.auth().signOut().then(function() {
+				// Sign-out successful.
+				window.location.href = "index.html";
+		}).catch(function(error) {
+			// An error happened.
+		});
+	}
+	
 	function init(){
 		ref = firebase.database().ref("/videos/");
 		
@@ -50,6 +59,9 @@ $(document).ready(function(){
 		
 		//$(".mainVideoTitle").text("")
 	}
+	
+	
+	
 	
 	UserID = $.query.get('id').split("@")[0];
 	$(".userName").text(UserID);
