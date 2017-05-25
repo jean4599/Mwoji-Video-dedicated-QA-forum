@@ -26,7 +26,8 @@ $(document).ready(function(){
 							count = count + 1;
 							console.log(count);
 						})
-						var LikeButton = '<div class="like_button"><button>Like</button><span class="count">' +count +'</span></div>'
+						var LikeButton = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">'+
+						count+'</span></div>'
 						ele ='<li class="list-group-item answer" id="'+answerSnap.key+'">'+answerSnap.val().answer+LikeButton+'</li>'
 					
 						post.find('.answers').append(ele)
@@ -70,7 +71,7 @@ $(document).ready(function(){
 		}
 	
 	}
-	$('#posts').on('click','.like_button button', function(){
+	$('#posts').on('click','.like-btn', function(){
 		var $count = $(this).parent().find('.count');			
 		let answer = $(this).parents('.answer');
   		let answerId = answer.attr('id');
@@ -96,7 +97,7 @@ $(document).ready(function(){
 		updates[newAnswerKey] = {answer:answer};
 		firebase.database().ref(REF_question+'/'+postId+'/answers/').update(updates).then(function(){
 			var post = document.getElementById(postId);
-			var LikeButton = '<div class="like_button"><button>Like</button><span class="count">0</span></div>'
+			var LikeButton = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">0</span></div>'
 			ele ='<li class="list-group-item answer" id ="' + newAnswerKey + '">' +answer+LikeButton+'</li>'
 			$(post).find('.answers').append(ele)
 			$(post).find('input').val('')
