@@ -78,11 +78,19 @@
 
 <div class="container">
   <div class="btn-group" data-toggle="buttons">
-    <label class="btn btn-primary active" id="seeall">
-      <input type="radio" name="options" id="option1" autocomplete="off" checked> See all
+    <label class="display-option btn btn-primary active" id="seeall">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked> All posts
     </label>
-    <label class="btn btn-primary" id="seemine">
-      <input type="radio" name="options" id="option2" autocomplete="off"> See mine
+    <label class="display-option btn btn-primary" id="seemine">
+      <input type="radio" name="options" id="option2" autocomplete="off"> My posts
+    </label>
+  </div>
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary active" id="list-view">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+    </label>
+    <label class="btn btn-primary" id="grid-view">
+      <input type="radio" name="options" id="option2" autocomplete="off"><span class="glyphicon glyphicon-th" aria-hidden="true"></span>
     </label>
   </div>
   <div class="row">

@@ -7,6 +7,10 @@
 	height:100%;
 	padding: 10px;
 }
+.post{
+	width:380px;
+	display: inline-block;
+}
 #overview, #ask, #answer{
 	width:90%;
 	height:100%;

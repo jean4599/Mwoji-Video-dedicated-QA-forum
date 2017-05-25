@@ -110,6 +110,14 @@ $( document ).ready(function() {
 		});
 
 	})
+	$("#list-view").on('click', function(){
+		console.log('show list')
+		$(".left").removeClass('col-md-12').addClass('col-md-4');
+	})
+	$("#grid-view").on('click', function(){
+		console.log('show grid')
+		$(".left").removeClass('col-md-4').addClass('col-md-12');
+	})
 
 
 	var video = document.getElementById("myVideo");
@@ -181,7 +189,7 @@ $( document ).ready(function() {
 	function renderPost(post){
 
 		var newPost = $('#post-template').clone();
-		newPost.find('.question').html(post.question+"<div class='text-align-right'>Posted by:"+post.UserID+"</div>");
+		newPost.find('.question').html(post.question);
 		
 		newPost.attr('id', post.id);
 		newPost.find('.description').html(post.discription);
