@@ -1,9 +1,9 @@
 var UserID;
-
+var postId;
 $(document).ready(function(){
 	$('#posts').on('click','.answer-btn', function(){
 		let post = $(this).parents('.post');
-		let postId = post.attr('id');
+		postId = post.attr('id');
 		// change css
 		post.find('.answers-container').toggleClass('hide');
 		//check whether it's show or hide
@@ -14,7 +14,8 @@ $(document).ready(function(){
 			//erase answers
 			post.find('.answers').children('.answer').remove()
 			// get answers from firebase
-			firebase.database().ref(REF_question+'/'+postId+'/answers/').once('value').then(function(snapshot){
+			var order = 0
+			firebase.database().ref(REF_question+'/'+postId+'/answers/').orderByChild('likeCount').once('value').then(function(snapshot){
 				var ele;
 				var answer;
 				snapshot.forEach(function(answerSnap){
@@ -28,6 +29,10 @@ $(document).ready(function(){
 						})
 						var LikeButton = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">'+
 						count+'</span></div>'
+						if (order === 0){
+							post.find('.top-answer').html(answerSnap.val().answer)
+						}
+						order++;
 						ele ='<li class="list-group-item answer" id="'+answerSnap.key+'">'+answerSnap.val().answer+LikeButton+'</li>'
 					
 						post.find('.answers').append(ele)
@@ -56,8 +61,7 @@ $(document).ready(function(){
 		}
 	})
 
-	Logout();
-
+	
 	function Logout() {
 		var LogoutBtn = document.getElementById('logout');
 	
@@ -82,6 +86,15 @@ $(document).ready(function(){
 				if (snapshot.val() == null) {
 					var newAnswerKey = firebase.database().ref('likes/' + answerId + '/' + UserID + '/').push("1").then(function(){
 						$count.html($count.html() * 1 + 1);
+						firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/likeCount').once("value",function(snapshot){
+								var newVal = snapshot.val();
+								
+								newVal--;
+								firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/').update({likeCount : newVal}); 
+								console.log("New rating:" + newVal);
+
+						});
+
 					})
 				}
 				else {
