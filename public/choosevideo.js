@@ -1,5 +1,5 @@
 var fileName; var ref;
-var maxViewed ="psy";
+var maxViewed ="Wildlife";
 var UserID;
 $(document).ready(function(){
 	$(".sidebox-image").click(function(){
