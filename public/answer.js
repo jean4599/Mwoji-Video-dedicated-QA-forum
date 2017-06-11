@@ -91,12 +91,35 @@ $(document).ready(function(){
 						});
 
 					})
+					
+				
+					//$(this).attr("aria-pressed","true");
+					//$(this).removeClass("active");
 				}
 				else {
 					console.log("Exist");
+					var newAnswerKey = firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/who/'+UserID + '/').remove().then(function(){
+						$count.html($count.html() * 1 - 1);
+						firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/likeCount').once("value",function(snapshot){
+								var newVal = snapshot.val();							
+								newVal++;
+								firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/').update({likeCount : newVal});
+								console.log("New rating:" + newVal);
+						});
+
+					})
+					//$(this).attr("aria-pressed","false");
+					
+					//$(this).addClass("active");
+				
 				}
 		})
-		$(this).addClass('active');
+		//$(this).toggle();
+		console.log("active:"+$(this).hasClass("active"));
+		if($(this).hasClass("active"))
+			$(this).removeClass('active');		
+		else
+			$(this).addClass('active');		
 	});
 	
 	function saveAnswer(answer, postId){
