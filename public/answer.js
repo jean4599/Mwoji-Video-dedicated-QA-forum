@@ -11,36 +11,36 @@ $(document).ready(function(){
 			$(this).html('Answer / See more <span class="glyphicon glyphicon-chevron-down">');
 		}
 		else{ //if it is shown
-			//erase answers
-			post.find('.answers').children('.answer').remove()
-			// get answers from firebase
-			var order = 0
-			firebase.database().ref(REF_question+'/'+postId+'/answers/').orderByChild('likeCount').once('value').then(function(snapshot){
-				var ele;
-				var answer;
-				snapshot.forEach(function(answerSnap){
-					answer = answerSnap.val();
-					var count = 0;
-					console.log(answer.answer);
-					firebase.database().ref('likes/' + answerSnap.key + '/').once('value').then(function(snapshot){
-						snapshot.forEach(function(answerSnap){
-							count = count + 1;
-							console.log(count);
-						})
-						var LikeButton = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">'+
-						count+'</span></div>'
-						if (order === 0){
-							post.find('.top-answer').html(answerSnap.val().answer)
-						}
-						order++;
-						ele ='<li class="list-group-item answer" id="'+answerSnap.key+'">'+answerSnap.val().answer+LikeButton+'</li>'
+			// //erase answers
+			// post.find('.answers').children('.answer').remove()
+			// // get answers from firebase
+			// var order = 0
+			// firebase.database().ref(REF_question+'/'+postId+'/answers/').orderByChild('likeCount').once('value').then(function(snapshot){
+			// 	var ele;
+			// 	var answer;
+			// 	snapshot.forEach(function(answerSnap){
+			// 		answer = answerSnap.val();
+			// 		var count = 0;
+			// 		console.log(answer.answer);
+			// 		firebase.database().ref('likes/' + answerSnap.key + '/').once('value').then(function(snapshot){
+			// 			snapshot.forEach(function(answerSnap){
+			// 				count = count + 1;
+			// 				console.log(count);
+			// 			})
+			// 			var LikeButton = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">'+
+			// 			count+'</span></div>'
+			// 			if (order === 0){
+			// 				post.find('.top-answer').html(answerSnap.val().answer)
+			// 			}
+			// 			order++;
+			// 			ele ='<li class="list-group-item answer" id="'+answerSnap.key+'">'+answerSnap.val().answer+LikeButton+'</li>'
 					
-						post.find('.answers').append(ele)
-					})
+			// 			post.find('.answers').append(ele)
+			// 		})
 
 						
-				})
-			})
+			// 	})
+			// })
 			$(this).html('Close <span class="glyphicon glyphicon-chevron-up">');
 		}
 	})
@@ -102,12 +102,12 @@ $(document).ready(function(){
 				}
 		})
 	});
-
+	
 	function saveAnswer(answer, postId){
 		if(answer=='')return 
 		var newAnswerKey = firebase.database().ref(REF_question+'/'+postId+'/answers/').push().key;
 		var updates = {};
-		updates[newAnswerKey] = {answer:answer};
+		updates[newAnswerKey] = {answer:answer, likeCount:0};
 		firebase.database().ref(REF_question+'/'+postId+'/answers/').update(updates).then(function(){
 			var post = document.getElementById(postId);
 			var LikeButton = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">0</span></div>'

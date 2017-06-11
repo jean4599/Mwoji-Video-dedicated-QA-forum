@@ -187,14 +187,10 @@ $( document ).ready(function() {
 		$('#posts').children().remove();
 	}
 	function renderPost(post){
-		console.log(post)
-		var sortable = post.answers;
-		for (var vehicle in maxSpeed) {
-		    sortable.push([vehicle, maxSpeed[vehicle]]);
-		}
+		var all_answer = toArray(post.answers);
 
-		sortable.sort(function(a, b) {
-		    return a[1] - b[1];
+		all_answer.sort(function(a, b) {
+		    return a['likeCount'] - b['likeCount'];
 		});
 
 		var newPost = $('#post-template').clone();
@@ -203,11 +199,25 @@ $( document ).ready(function() {
 		newPost.attr('id', post.id);
 		newPost.find('.description').html(post.discription);
 		newPost.attr('time', post.videoTime)
-		newPost.attr('UserID', post.UserID)
-		
+		newPost.attr('UserID', post.UserID)		
 		
 		$('#posts').append(newPost);
+
+		if(all_answer.length>0){
+			//Best answer
+			console.log(all_answer[0].answer)
+			$('#'+post.id).find('.top-answer').html(all_answer[0].answer)
+			//All answers
+			for(var ans in all_answer){
+				renderAnswer(all_answer[ans], post.id);
+			}
+		}
+	}
+	function renderAnswer(answer, postId){
+		var like = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">'+(-answer.likeCount)+'</span></div>';
+		var ele ='<li class="list-group-item answer" id="'+answer.key+'">'+answer.answer+like+'</li>'
 		
+		$('#'+postId).find('.answers').append(ele)
 	}
 	function secToHHMMSS(sec){
 		var hours   = Math.floor(sec / 3600);
@@ -259,5 +269,24 @@ $( document ).ready(function() {
 		getVideoScreenShot(posts, i-1)
 		}
 	}
+	function toArray(obj) {
+	  if (!obj) return []
 
+	  var arr = Object.keys(obj).map(function (key, index) { 
+	    var result  = clone(obj[key]);
+	    if(typeof(result)==='object'){
+	      result.key = key
+	    }
+	    return result; 
+	  });
+	  return arr
+	}
+	function clone(obj) {
+	    if (null === obj || "object" !== typeof obj) return obj;
+	    var copy = obj.constructor();
+	    for (var attr in obj) {
+	        if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
+	    }
+	    return copy;
+	}
 })
