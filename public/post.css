@@ -59,11 +59,11 @@ img, #myCanvas{
 	color: #4257ca;
     cursor: pointer;
 }
-.rating-container{
+.like-btn{
 	float: right;
 }
-.like-btn{
-	font-size: 20px;
+.thumb-icon{
+	font-size: 15px;
     cursor: pointer;
     margin-right: 10px;
 }

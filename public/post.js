@@ -214,7 +214,16 @@ $( document ).ready(function() {
 		}
 	}
 	function renderAnswer(answer, postId){
-		var like = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">'+(-answer.likeCount)+'</span></div>';
+		console.log(answer)
+		var like;
+		if(answer.who){
+			if(answer.who[UserID]!=null){
+				like = '<button class="btn btn-default btn-xs active like-btn"><i class="material-icons thumb-icon">thumb_up</i><span class="count">'+(-answer.likeCount)+'</span></button>';
+			}
+		}
+		if(like==null){
+				like = '<button class="btn btn-default btn-xs like-btn"><i class="material-icons thumb-icon">thumb_up</i><span class="count">'+(-answer.likeCount)+'</span></button>';
+		}
 		var ele ='<li class="list-group-item answer" id="'+answer.key+'">'+answer.answer+like+'</li>'
 		
 		$('#'+postId).find('.answers').append(ele)

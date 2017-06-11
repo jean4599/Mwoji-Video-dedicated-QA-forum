@@ -79,20 +79,15 @@ $(document).ready(function(){
 		var $count = $(this).parent().find('.count');			
 		let answer = $(this).parents('.answer');
   		let answerId = answer.attr('id');
-  		console.log(answerId);
-  		console.log(UserID);
-		firebase.database().ref('likes/' + answerId + '/' + UserID + '/').once('value').then(function(snapshot){
-				console.log(snapshot);
+		firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/who/'+UserID+'/').once('value').then(function(snapshot){
 				if (snapshot.val() == null) {
-					var newAnswerKey = firebase.database().ref('likes/' + answerId + '/' + UserID + '/').push("1").then(function(){
+					var newAnswerKey = firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/who/'+UserID + '/').push("1").then(function(){
 						$count.html($count.html() * 1 + 1);
 						firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/likeCount').once("value",function(snapshot){
-								var newVal = snapshot.val();
-								
+								var newVal = snapshot.val();							
 								newVal--;
-								firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/').update({likeCount : newVal}); 
+								firebase.database().ref(REF_question+'/'+postId+'/answers/'+answerId+'/').update({likeCount : newVal});
 								console.log("New rating:" + newVal);
-
 						});
 
 					})
@@ -101,6 +96,7 @@ $(document).ready(function(){
 					console.log("Exist");
 				}
 		})
+		$(this).addClass('active');
 	});
 	
 	function saveAnswer(answer, postId){
@@ -110,8 +106,8 @@ $(document).ready(function(){
 		updates[newAnswerKey] = {answer:answer, likeCount:0};
 		firebase.database().ref(REF_question+'/'+postId+'/answers/').update(updates).then(function(){
 			var post = document.getElementById(postId);
-			var LikeButton = '<div class="rating-container"><i class="like-btn material-icons">thumb_up</i><span class="count">0</span></div>'
-			ele ='<li class="list-group-item answer" id ="' + newAnswerKey + '">' +answer+LikeButton+'</li>'
+			var like = '<button class="btn btn-default btn-xs like-btn"><i class="material-icons thumb-icon">thumb_up</i><span class="count">0</span></button>';
+			ele ='<li class="list-group-item answer" id ="' + newAnswerKey + '">' +answer+like+'</li>'
 			$(post).find('.answers').append(ele)
 			$(post).find('input').val('')
 		})
