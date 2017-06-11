@@ -187,10 +187,19 @@ $( document ).ready(function() {
 		$('#posts').children().remove();
 	}
 	function renderPost(post){
+		console.log(post)
+		var sortable = post.answers;
+		for (var vehicle in maxSpeed) {
+		    sortable.push([vehicle, maxSpeed[vehicle]]);
+		}
+
+		sortable.sort(function(a, b) {
+		    return a[1] - b[1];
+		});
 
 		var newPost = $('#post-template').clone();
 		newPost.find('.question').html(post.question);
-		
+		newPost.find('.time-label').html(secToHHMMSS(post.videoTime))
 		newPost.attr('id', post.id);
 		newPost.find('.description').html(post.discription);
 		newPost.attr('time', post.videoTime)
@@ -199,6 +208,16 @@ $( document ).ready(function() {
 		
 		$('#posts').append(newPost);
 		
+	}
+	function secToHHMMSS(sec){
+		var hours   = Math.floor(sec / 3600);
+	    var minutes = Math.floor((sec - (hours * 3600)) / 60);
+	    var seconds = Math.floor(sec - (hours * 3600) - (minutes * 60));
+
+	    if (hours   < 10) {hours   = "0"+hours;}
+	    if (minutes < 10) {minutes = "0"+minutes;}
+	    if (seconds < 10) {seconds = "0"+seconds;}
+	    return hours+':'+minutes+':'+seconds;
 	}
 	function getTimeStamp(){
 		var currentdate = new Date(); 

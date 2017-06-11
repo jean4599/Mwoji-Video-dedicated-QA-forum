@@ -56,7 +56,7 @@ img, canvas{
 	background-color: yellow;
 }
 .time-btn{
-	color: orangered;
+	color: #4257ca;
     cursor: pointer;
 }
 .rating-container{
@@ -66,4 +66,7 @@ img, canvas{
 	font-size: 20px;
     cursor: pointer;
     margin-right: 10px;
+}
+.time-label{
+	display: inline;
 }
